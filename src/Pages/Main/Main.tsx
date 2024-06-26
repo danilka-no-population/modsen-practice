@@ -1,7 +1,6 @@
 import React from "react";
-import {Header} from "../../components/Header/Header";
 import {Map} from "../../components/Map/Map";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 export const Main = () => {
     const navigate = useNavigate();

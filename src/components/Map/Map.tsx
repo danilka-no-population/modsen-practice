@@ -31,7 +31,7 @@ interface Place {
 export const Map: React.FC = () => {
   const [zoomValue, setZoomValue] = useState<number>(14);
   const [radius] = useState<number>(1000);
-  const [buildingType, setBuildingType] = useState('museum');
+  const [buildingType] = useState('museum');
   const [currentPlace, setCurrentPlace] = useState<Place | null>(null);
 
   const { isLoaded, loadError } = useLoadScript({
@@ -63,6 +63,9 @@ export const Map: React.FC = () => {
     setCurrentPlace(place);
     setZoomValue(20);
   };
+
+  console.log(showCurrentPlace.name);
+  
 
   if (loadError) return <div>Ошибка загрузки карты</div>;
   if (!isLoaded) return <div>Загрузка карты...</div>;

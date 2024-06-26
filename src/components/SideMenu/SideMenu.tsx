@@ -8,9 +8,6 @@ const SideMenu: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
