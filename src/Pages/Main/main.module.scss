@@ -1,0 +1,32 @@
+$background-color: #f0f0f0;
+$filter-bg-color: #ffffff;
+$place-info-bg-color: #ffffff;
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+    background-color: $background-color;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.filterSection {
+    flex: 1;
+    margin-right: 20px;
+    background-color: $filter-bg-color;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.placeInfoSection {
+    flex: 2;
+    background-color: $place-info-bg-color;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}

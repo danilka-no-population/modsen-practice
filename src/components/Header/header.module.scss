@@ -1,0 +1,55 @@
+$header-width: 2em;
+$icon-size: 50px;
+$color-grey: grey;
+$color-white: white;
+$color-shadow: rgba(0, 0, 0, 0.1);
+$color-border: rgba(0, 0, 0, 0.3);
+$color-background: rgb(255, 255, 255);
+
+.header {
+    width: $header-width;
+    height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-white;
+    position: fixed;
+    z-index: 5;
+    box-shadow: 0 3px 2px 2px $color-shadow;
+    border-right: 3px solid $color-border;
+    border-bottom: 1px solid $color-grey;
+}
+
+.logo {
+    margin-bottom: 15px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.navLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: $icon-size;
+    height: $icon-size;
+    background-color: $color-background;
+    border: 2px solid $color-grey;
+    border-radius: 5px;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

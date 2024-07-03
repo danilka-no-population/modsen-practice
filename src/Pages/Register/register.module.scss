@@ -1,0 +1,60 @@
+$input-border-color: rgb(124, 124, 124);
+$button-bg-color: rgb(68, 135, 150);
+$button-text-color: aliceblue;
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.inputField {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid $input-border-color;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.submitButton {
+    width: 95%;
+    margin-top: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: $button-text-color;
+    background-color: $button-bg-color;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registerLink {
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    color: $button-bg-color;
+}

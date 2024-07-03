@@ -1,0 +1,57 @@
+.placesContainer {
+    z-index: 5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+    background-color: #fff;
+    overflow-y: auto;
+
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.placeCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 19em;
+    padding: 2em;
+    border: 5px solid grey;
+    border-radius: 5px;
+}
+
+.placeInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.placeImage {
+    width: 70%;
+}
+
+.placeName {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.favoriteButton {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

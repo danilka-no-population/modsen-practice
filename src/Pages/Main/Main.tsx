@@ -1,24 +1,25 @@
-import React from "react";
-import {Map} from "../../components/Map/Map";
-import { useNavigate} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Filter from '../../components/Filter/Filter';
+import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
+import { useUserAuth } from '../../hooks/useUserAuth';
 
-export const Main = () => {
+const Main: React.FC = () => {
     const navigate = useNavigate();
+    const { isAuthenticated } = useUserAuth();
 
-    const handleLogin = () => {
-        navigate('/login');
-    }
-    const handleRegister = () => {
-        navigate('/register')
-    }
-    return(
-        <React.Fragment>
-            {/* <Header /> */}
-            <Map/>
-            <h3>Login</h3>
-            <button onClick={handleLogin}>Login</button>
-            <h3>Register</h3>
-            <button onClick={handleRegister}>Register</button>
-        </React.Fragment>
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/login');
+        }
+    }, [isAuthenticated, navigate]);
+
+    return (
+        <>
+                <Filter />
+                <PlaceInfo />
+        </>
     );
-}
+};
+
+export default Main;
