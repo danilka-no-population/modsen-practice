@@ -33,7 +33,7 @@ const RegisterPage: React.FC = () => {
     return (
         <div className={styles.loginContainer}>
             <div className={styles.formWrapper}>
-                <p className={styles.title}>Необходимо зарегистрироваться</p>
+                <p className={styles.title}>Создать аккаунт</p>
                 <form onSubmit={handleSubmitRegister}>
                     <input
                         className={styles.inputField}
@@ -56,13 +56,11 @@ const RegisterPage: React.FC = () => {
                         value={againPass}
                         onChange={(e) => setAgainPass(e.target.value)}
                     />
-                    <button className={styles.submitButton} type="submit">
-                        <p>Регистрация</p>
-                    </button>
-                    <Link to='/login' className={styles.registerLink}>
-                        Войти
-                    </Link>
+                    <button className={styles.submitButton} type="submit">Зарегистрироваться</button>
                 </form>
+                <Link to='/login' className={styles.registerLink}>
+                        Войти
+                </Link>
             </div>
         </div>
     );

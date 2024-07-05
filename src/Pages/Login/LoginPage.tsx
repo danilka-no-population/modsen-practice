@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
     return (
         <div className={styles.loginContainer}>
             <div className={styles.formWrapper}>
-                <p className={styles.title}>Необходимо авторизоваться</p>
+                <p className={styles.title}>Войти в аккаунт</p>
                 <form onSubmit={handleLogin}>
                     <input
                         className={styles.inputField}

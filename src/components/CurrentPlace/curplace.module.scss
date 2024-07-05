@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0.5em;
+    align-items: center;
+    align-items: center;
+    border-radius: 0.5em;
+    height: fit-content;
+
+}
+
+.mainText{
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.infoImg{
+    border-radius: 0.5em;
+}

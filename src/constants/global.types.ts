@@ -1,4 +1,5 @@
 interface Place {
+    types: string;
     photo: any;
     name: string;
     photos?: google.maps.places.Photo[];
