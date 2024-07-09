@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './favourites.module.scss';
 
 const favouritePlaces = [
     { id: 1, name: "Нацыянальны гістарычны музей Рэспублікі Беларусь", description: "Описание позже..." },
@@ -10,11 +11,16 @@ const favouritePlaces = [
 
 const Favourites: React.FC = () => {
     return (
-        <div>
-            <h2>Favourite Places</h2>
-            <ul>
+        <div className={styles.filterWrapper}>
+            <input 
+                type="text" 
+                className={styles.searchField}
+                placeholder="Место, адрес..."
+            />
+            <p className={styles.textLabel}>Избранное:</p>
+            <ul className={styles.list}>
                 {favouritePlaces.map((place) => (
-                    <li key={place.id}>
+                    <li key={place.id} className={styles.elementWrapper}>
                         <h3>{place.name}</h3>
                         <p>{place.description}</p>
                     </li>

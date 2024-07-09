@@ -1,65 +1,20 @@
-// .filterWrapper {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     padding: 20px;
-// }
-
-// .searchField {
-//     width: 80%;
-//     height: 3em;
-//     margin-bottom: 1.5em;
-//     padding: 10px;
-//     font-size: 1rem;
-//     border: 2px solid #7c7c7c;
-//     border-radius: 7px;
-// }
-
-// .controls {
-//     display: flex;
-//     justify-content: space-between;
-//     width: 100%;
-//     gap: 20px;
-// }
-
-// .select {
-//     flex: 1;
-//     padding: 15px;
-//     font-weight: bold;
-//     font-size: 1rem;
-//     border: 2px solid #000;
-//     border-radius: 5px;
-//     background-color: transparent;
-// }
-
-// .searchButton {
-//     padding: 15px 30px;
-//     font-size: 1rem;
-//     font-weight: bold;
-//     border: 2px solid #000;
-//     border-radius: 5px;
-//     background-color: transparent;
-//     cursor: pointer;
-// }
-
-// .searchButton:hover {
-//     background-color: #f0f0f0;
-// }
-
+$width: 100%;
+$height: 1.5em;
 
 .filterWrapper {
     display: flex;
     width: 75%;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1.5em;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100vh;
+    padding: $height;
+    margin-right: 2em;
 }
 
 .searchField {
-    width: 100%;
-    height: 1.5em;
-    margin-bottom: 1.5em;
+    width: 105%;
+    margin-bottom: 1em;
     padding: 10px;
     font-size: 1rem;
     border: 2px solid #7c7c7c;
@@ -70,12 +25,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: $width;
     max-height: 60%;
 }
 
 .scrollableList {
-    width: 100%;
+    width: $width;
     max-height: 60%;
     margin-bottom: 10px;
     border: 3px solid grey;
@@ -114,9 +69,11 @@
     background-color: transparent;
     cursor: pointer;
     align-content : center;
-    width: 100%;
+    width: $width;
     height: 3em;
     background-color: #5E7BC7;
+    position: static;
+    border: none;
 }
 
 .textLabel{
@@ -125,4 +82,47 @@
 
 .searchButton img{
     width: 1.5em;
+}
+
+.radiusWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin: 2em 2em 2em 0;
+    width: 50%;
+}
+
+.radiusInput{
+    width: $width;
+    height: $height;
+    margin-bottom: 1.5em;
+    padding: 10px;
+    font-size: 1rem;
+    border: 3px solid #5f5f5f;
+    border-radius: 7px;
+}
+
+.customOption{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    background: none;
+    border: none;
+    opacity: 100%;
+}
+
+.tempWrapper{
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.textLabel{
+    margin-left: 1em;
 }

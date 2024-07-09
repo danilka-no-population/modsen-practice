@@ -1,17 +1,17 @@
-import plus18 from '../assets/icons/18plus.png';
-import bank from '../assets/icons/bank.png';
-import car from '../assets/icons/car.png';
-import coffee from '../assets/icons/coffee.png';
-import culture from '../assets/icons/culture.png';
-import entertaiment from '../assets/icons/entertaiment.png';
-import food from '../assets/icons/food.png';
-import gas from '../assets/icons/gas.png';
-import industrial from '../assets/icons/industrial.png';
-import nature from '../assets/icons/nature.png';
-import other from '../assets/icons/other.png';
-import religion from '../assets/icons/religion.png';
-import shop from '../assets/icons/shop.png';
-import sport from '../assets/icons/sport.png';
+import plus18 from '../assets/icons/places/18plus.png';
+import bank from '../assets/icons/places/bank.png';
+import car from '../assets/icons/places/car.png';
+import coffee from '../assets/icons/places/coffee.png';
+import culture from '../assets/icons/places/culture.png';
+import entertaiment from '../assets/icons/places/entertaiment.png';
+import food from '../assets/icons/places/food.png';
+import gas from '../assets/icons/places/gas.png';
+import industrial from '../assets/icons/places/industrial.png';
+import nature from '../assets/icons/places/nature.png';
+import other from '../assets/icons/places/other.png';
+import religion from '../assets/icons/places/religion.png';
+import shop from '../assets/icons/places/shop.png';
+import sport from '../assets/icons/places/sport.png';
 
 export const categoriesIcons: { [key: string]: string } = {
     restaurant: food,

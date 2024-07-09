@@ -1,11 +1,13 @@
+$border: 0.5em;
+
 .container{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 0.5em;
+    padding: $border;
     align-items: center;
     align-items: center;
-    border-radius: 0.5em;
+    border-radius: $border;
     height: fit-content;
 
 }
@@ -16,5 +18,5 @@
 }
 
 .infoImg{
-    border-radius: 0.5em;
+    border-radius: $border;
 }

@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer, Circle } from '@react-google-maps/api';
 import { mapStyleArr } from './map.styles';
 import styles from './styles.module.scss';
 import { categoriesIcons } from '../../constants/markers';
 import CurrentPlace from '../CurrentPlace/CurrentPlace';
+import location from '../../assets/icons/location.svg';
 // @ts-ignore
 import { RootState } from '../app/store';
-import { useTypeState } from '../../hooks/useTypeState';
-import { setPlacesList } from '../../store/reducers/placeSlice';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { setPlacesList } from '../../store/slices/placeSlice';
 
 const DEFAULT_OPTIONS = { disableDefaultUI: true, zoomControl: true, styles: mapStyleArr };
 const DEFAULT_CENTER = { lat: 53.89148473951982, lng: 27.56005834796063 };
@@ -16,24 +17,25 @@ const MAP_DIMENSIONS = { width: '100%', height: '100vh' };
 
 const Map: React.FC = () => {
     const dispatch = useDispatch();
-    const filterSettings = useTypeState((state: RootState) => state.filter);
+    const filterSettings = useAppSelector((state: RootState) => state.filter);
     const [zoomLevel, setZoomLevel] = useState<number>(14);
     const [currentLocation, setCurrentLocation] = useState<Place | null>(null);
     const [locations, setLocations] = useState<Place[]>([]);
     const [activeLocation, setActiveLocation] = useState<any>(null);
     const [routeDirections, setRouteDirections] = useState<google.maps.DirectionsResult | null>(null);
     const [userPosition, setUserPosition] = useState<google.maps.LatLngLiteral | null>(null);
+    const [watchId, setWatchId] = useState<number | null>(null);
 
     const mapElement = useRef<google.maps.Map | null>(null);
 
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyA3-398eAttT4Mb_TRfUyHfI9U0lwL7V3c',
+        googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
         libraries: ['places'],
     });
 
     const handleMapLoad = useCallback((map: google.maps.Map) => {
         mapElement.current = map;
-        navigator.geolocation.getCurrentPosition(
+        const id = navigator.geolocation.watchPosition(
             (position) => {
                 const userCenter = {
                     lat: position.coords.latitude,
@@ -42,18 +44,29 @@ const Map: React.FC = () => {
                 setUserPosition(userCenter);
                 setZoomLevel(16);
             },
-            (error) => console.error(error)
+            (error) => console.error(error),
+            { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 }
         );
+        setWatchId(id);
     }, []);
 
     useEffect(() => {
-        if (isLoaded) {
+        return () => {
+            if (watchId) {
+                navigator.geolocation.clearWatch(watchId);
+            }
+        };
+    }, [watchId]);
+
+    useEffect(() => {
+        if (isLoaded && userPosition) {
             const service = new google.maps.places.PlacesService(document.createElement('div'));
 
             const request = {
-                location: DEFAULT_CENTER,
+                location: userPosition,
                 radius: filterSettings.radius,
                 type: [filterSettings.buildingType],
+                name: [filterSettings.name]
             };
 
             //@ts-ignore
@@ -66,11 +79,11 @@ const Map: React.FC = () => {
                 }
             });
         }
-    }, [isLoaded, filterSettings, dispatch]);
+    }, [isLoaded, userPosition, filterSettings, dispatch, name]);
 
     useEffect(() => {
         if (currentLocation) {
-            setZoomLevel(18);
+            setZoomLevel(14);
         }
     }, [currentLocation]);
 
@@ -110,18 +123,33 @@ const Map: React.FC = () => {
                 <GoogleMap
                     mapContainerStyle={MAP_DIMENSIONS}
                     zoom={zoomLevel}
-                    center={
-                        currentLocation
-                            ? {
-                                  lat: currentLocation.geometry.location.lat(),
-                                  lng: currentLocation.geometry.location.lng(),
-                              }
-                            : DEFAULT_CENTER
-                    }
+                    center={userPosition || DEFAULT_CENTER}
                     onLoad={handleMapLoad}
                     options={DEFAULT_OPTIONS}
                 >
                     {routeDirections && <DirectionsRenderer directions={routeDirections} />}
+                    {userPosition && (
+                        <>
+                            <Marker
+                                position={userPosition}
+                                icon={{
+                                    url: location,
+                                    scaledSize: new google.maps.Size(25, 25),
+                                }}
+                            />
+                            <Circle
+                                center={userPosition}
+                                radius={filterSettings.radius}
+                                options={{
+                                    fillColor: '#0000FF',
+                                    fillOpacity: 0.1,
+                                    strokeColor: '#0000FF',
+                                    strokeOpacity: 0.6,
+                                    strokeWeight: 1,
+                                }}
+                            />
+                        </>
+                    )}
                     {locations.map((place, index) => (
                         <Marker
                             key={index}
@@ -162,3 +190,4 @@ const Map: React.FC = () => {
 };
 
 export default Map;
+

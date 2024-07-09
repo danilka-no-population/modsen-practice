@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTypeState } from "../../hooks/useTypeState";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import favourite from '../../assets/icons/favourite.svg';
 import styles from './places.module.scss';
 
@@ -17,7 +17,7 @@ interface Place {
 }
 
 const PlaceInfo: React.FC = () => {
-    const placesList = useTypeState((state) => state.places.places);
+    const placesList = useAppSelector((state) => state.places.places);
     const [places, setPlaces] = useState<Place[]>([]);
 
     useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { signInUser } from "../../firebaseConfig";
-import { setUser } from "../../store/reducers/userSlice";
+import { setUser } from "../../store/slices/userSlice";
 import styles from "./login.module.scss";
 
 const LoginPage: React.FC = () => {
@@ -11,6 +11,7 @@ const LoginPage: React.FC = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -21,6 +22,7 @@ const LoginPage: React.FC = () => {
             dispatch(setUser({ email: user.email ?? '', token: user.accessToken, id: user.uid }));
             navigate("/");
         } catch (error) {
+            setError("Неправильно введён логин и-или пароль");
             console.error("Login error:", error);
         }
     };
@@ -29,6 +31,7 @@ const LoginPage: React.FC = () => {
         <div className={styles.loginContainer}>
             <div className={styles.formWrapper}>
                 <p className={styles.title}>Войти в аккаунт</p>
+                {error && <p className={styles.error}>{error}</p>}
                 <form onSubmit={handleLogin}>
                     <input
                         className={styles.inputField}

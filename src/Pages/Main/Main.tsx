@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Filter from '../../components/Filter/Filter';
-import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
 import { useUserAuth } from '../../hooks/useUserAuth';
+import Favourites from '../Favourites/Favourites';
 
 const Main: React.FC = () => {
     const navigate = useNavigate();
@@ -17,7 +17,9 @@ const Main: React.FC = () => {
     return (
         <>
                 <Filter />
-                <PlaceInfo />
+                <Routes>
+                    <Route path="/favorites" element={<Favourites/>} />
+                </Routes>
         </>
     );
 };

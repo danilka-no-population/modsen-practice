@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { clearUser } from '../../store/reducers/userSlice';
+import { clearUser } from '../../store/slices/userSlice';
 import projectLogo from '../../assets/icons/logo.svg';
 import searchIcon from '../../assets/icons/newsearch.svg';
 import favoriteIcon from '../../assets/icons/newfav.svg';
