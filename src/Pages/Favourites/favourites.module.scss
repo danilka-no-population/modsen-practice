@@ -1,3 +1,12 @@
+.favContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+    height: auto;
+    margin-top: 1em;
+}
+
 .searchField {
     width: 100%;
     height: 1.5em;

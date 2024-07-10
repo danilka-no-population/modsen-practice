@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import {RootState} from "@reduxjs/toolkit/query";
 
 export const useUserAuth = () => {
-    const user = useSelector((state: RootState) => state.user);
-    const isAuthenticated = !!user.email;
+        // @ts-ignore
+        const {email, token, id} = useSelector((state : RootState<string, string, string>) => state.user);
 
-    return {
-        isAuthenticated,
-        ...user,
-    };
+        return {
+            isAuthenticated: !!email,
+            email,
+            token,
+            id,
+        };
 };

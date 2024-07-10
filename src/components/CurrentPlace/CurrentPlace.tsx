@@ -1,29 +1,42 @@
 import React from 'react';
+import {MarkersList} from "../../assets/icons/places";
 import styles from './curplace.module.scss';
 
 interface PlaceDetailsProps {
-    place: google.maps.places.PlaceResult | null;
+    place: google.maps.places.PlaceResult ;
 }
-
-const PlaceInfo: React.FC<PlaceDetailsProps> = ({ place }) => {
+const CurrentPlace: React.FC<PlaceDetailsProps> = ({ place }) => {
     if (!place) return null;
-
-    const getPhoto = () => {
+    const markers = MarkersList;
+    const getPlacePhoto = () => {
         if (place.photos && place.photos.length > 0) {
             const photoUrl = place.photos[0].getUrl({ maxWidth: 200, maxHeight: 200 });
-            return <img className={styles.image} src={photoUrl} alt={place.name || 'Place'} />;
+            return <img src={photoUrl} alt={place.name || 'Place'} />;
         }
-        return <p>Изображение отсутствует</p>;
     };
+
+    const { name, formatted_address, rating, user_ratings_total } = place;
 
     return (
         <div className={styles.container}>
-            <h2>{place.name}</h2>
-            <p className={styles.mainText}>{place.formatted_address}</p>
-            {getPhoto()}
-            {place.rating && <p className={styles.mainText}>Оценка: {place.rating}</p>}
+            {getPlacePhoto()}
+            <h2>{name}</h2>
+            <p className={styles.mainText}>{formatted_address}</p>
+            <p className={styles.mainText}>{rating && `Рейтинг: ${rating}`}</p>
+            <p className={styles.mainText}>{user_ratings_total && `Отзывов: ${user_ratings_total}`}</p>
+            <div className={styles.tempWrapper}>
+                {
+                    place?.types?.map((type) => {
+                        if (markers && markers[type] && markers[type][0]) {
+                            return <img src={markers[type][0]} alt={type} key={type} style={{width: '30px'}}/>;
+                        } else {
+                            return null;
+                        }
+                    })
+                }
+            </div>
         </div>
     );
 };
 
-export default PlaceInfo;
+export default CurrentPlace

@@ -12,6 +12,7 @@ html, body {
   width: $width;
   height: $height;
   overflow: hidden;
+  border: none;
 }
 
 .mapWrapper {
@@ -23,6 +24,32 @@ html, body {
   overflow: hidden;
   z-index: 1;
   position: relative;
+  border: none;
+}
+
+.tempWrapper{
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  justify-content: flex-end;
+  align-items: baseline;
+  overflow: hidden;
+  height: 100vh;
+  border: none;
+}
+
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  gap: 10px;
+  background: #5E7BC7;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
 }
 
 .mapRoute{
@@ -34,4 +61,29 @@ html, body {
   height: 3em;
   background-color: #c6d6ff;
   margin-top: 1em;
+}
+
+.placesContainer {
+  z-index: 1000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto;
+  height: fit-content;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 5px;
+  background: white;
+  overflow-y: auto;
+  border: none;
+
+
+-ms-overflow-style: none;  
+scrollbar-width: none;  
+
+&::-webkit-scrollbar {
+  display: none; 
+}
 }
