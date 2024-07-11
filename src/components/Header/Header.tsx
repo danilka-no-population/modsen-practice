@@ -32,7 +32,7 @@ const Header: React.FC = () => {
                 </nav>
             </div>
             <button className={styles.iconButton} onClick={handleLogout}>
-                <img src={isAuthenticated ? logoutIcon : userIcon} alt={isAuthenticated ? "Logout" : "User"} style={{width: '2.5em'}} />
+                <img src={isAuthenticated ? logoutIcon : userIcon} alt={isAuthenticated ? "Logout" : "User"} style={{width: '12vw', height: '6vh'}} />
             </button>
         </header>
     );

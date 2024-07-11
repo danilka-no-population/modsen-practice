@@ -50,6 +50,18 @@ $button-text-color: aliceblue;
     border: 2px solid black;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1em;
+}
+
+@media(max-width: 425px) {
+    .formWrapper {
+        width: 70%;
+        font-size: 2em;
+    }
+    .submitButton {
+        width: 100%;
+        font-size: 0.5em;
+    }
 }
 
 .registerLink {

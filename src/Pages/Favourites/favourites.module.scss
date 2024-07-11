@@ -4,8 +4,18 @@
     justify-content: flex-start;
     width: 90%;
     height: auto;
-    margin-top: 1em;
+    margin-top: 1rem;
 }
+
+@media(max-width: 1440px) {
+    .favContainer{
+        width: 85%;
+        padding: 0 1rem 1rem 1rem;
+    }
+    .textLabel{
+        padding: 0 1rem 1rem 1rem;
+    }
+  }
 
 .searchField {
     width: 100%;

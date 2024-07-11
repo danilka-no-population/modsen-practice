@@ -29,12 +29,12 @@ const PlaceInfo = () => {
                     </div>
                     <h2>{place.name}</h2>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
                     </p>
                     <div className={styles.tempWrapper}>
                         <button className={styles.iconButton} style={{background: 'none'}} onClick={handleDeletePlaceCurried(place)}>
                             <img src={saved} />
-                            Удалить
+                            Сохранено
                         </button>
                         <button className={styles.routeButton} style={{background: '#5E7BC7'}}><img src={route} />Маршрут</button>
                     </div>
